@@ -1,0 +1,576 @@
+<!DOCTYPE =html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOOMchick</title>
+    <link rel="stylesheet" href="./node_modules/nes.css/css/nes.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: #182028;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            opacity: 1;
+            animation: pageEnter 1.5s ease-out forwards;
+          }
+          
+          h1 {
+            font-size: 9vmin;
+            color: #8bf;
+            text-align: left;
+            font-family: Lato, sans-serif;
+            font-weight: 700;
+            margin: 1rem 0 1rem 2rem;
+            opacity: 1;
+            z-index: 20;
+          }
+          
+          /* Typewriter effect 1 */
+          @keyframes typing {
+            0%, 100% { content: ""; }
+            2% { content: "W"; }
+            4% { content: "We"; }
+            6% { content: "Wel"; }
+            8% { content: "Welc"; }
+            10% { content: "Welco"; }
+            12% { content: "Welcom"; }
+            14% { content: "Welcome"; }
+            16% { content: "Welcome t"; }
+            18% { content: "Welcome to"; }
+            20% { content: "Welcome to m"; }
+            22% { content: "Welcome to my"; }
+            24% { content: "Welcome to my h"; }
+            26% { content: "Welcome to my he"; }
+            28% { content: "Welcome to my hea"; }
+            30% { content: "Welcome to my hear"; }
+            32% { content: "Welcome to my heart"; }
+            34% { content: "Welcome to my heart Z"; }
+            36% { content: "Welcome to my heart Za"; }
+            38% { content: "Welcome to my heart Zan"; }
+            40% { content: "Welcome to my heart Zani"; }
+            42% { content: "Welcome to my heart Zanit"; }
+            44% { content: "Welcome to my heart Zanita"; }
+            46% { content: "Welcome to my heart Zanita B"; }
+            48% { content: "Welcome to my heart Zanita Ba"; }
+            50% { content: "Welcome to my heart Zanita Bab"; }
+            52% { content: "Welcome to my heart Zanita Baby"; }
+            54% { content: "Welcome to my heart Zanita Baby ❤"; }
+            56% { content: "Welcome to my heart Zanita Baby ❤🙈"; }
+            58% { content: ""; }
+            60% { content: "H"; }
+            62% { content: "Ha"; }
+            64% { content: "Hap"; }
+            66% { content: "Happ"; }
+            68% { content: "Happy"; }
+            70% { content: "Happy V"; }
+            72% { content: "Happy Va"; }
+            74% { content: "Happy Val"; }
+            76% { content: "Happy Vale"; }
+            78% { content: "Happy Valen"; }
+            80% { content: "Happy Valent"; }
+            82% { content: "Happy Valenti"; }
+            84% { content: "Happy Valentin"; }
+            86% { content: "Happy Valentine"; }
+            88% { content: "Happy Valentine's"; }
+            90% { content: "Happy Valentine's Day"; }
+            92% { content: "Happy Valentine's Day B"; }
+            94% { content: "Happy Valentine's Day Ba"; }
+            96% { content: "Happy valentine's Day Bab"; }
+            98% { content: "Happy valentine's Day Baby"; }
+            100% { content: "Happy valentine's Day Baby ❤"; }
+          }
+          
+          @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+          }
+          
+          .typewriter {
+            --caret: #ff69b4; /* Pink caret color */
+            font-family: 'Dancing Script', cursive;
+            color: #ff69b4; /* Pink text color */
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+            opacity: 0;
+            animation: fadeInText 1s ease-out forwards 1s;
+          }
+          
+          .typewriter::before {
+            content: "";
+            animation: typing 13.5s infinite;
+          }
+          
+          .typewriter::after {
+            content: "";
+            border-right: 1px solid var(--caret);
+            animation: blink 0.5s linear infinite;
+          }
+                  
+          .typewriter.nocaret::after {
+            border-right: 0;
+          }
+          
+          
+          @media (prefers-reduced-motion) {
+            .typewriter::after {
+              animation: none;
+            }
+            
+            @keyframes sequencePopup {
+              0%, 100% { content: "Partner"; }
+              25% { content: "Cute Friend"; }
+              50% { content: "Babu!"; }
+              75% { content: "Dream<3"; }
+            }
+          
+            .typewriter::before {
+              content: "developer";
+              animation: sequencePopup 12s linear infinite;
+            }
+          }
+
+          /* Add entrance animations */
+          @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: scale(0.9);
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+          }
+
+          @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+          }
+
+          /* Apply animations to elements */
+          .relative {
+            opacity: 1;
+            z-index: 10;
+          }
+
+          .absolute.inset-0 {
+            opacity: 1;
+            z-index: 5;
+          }
+
+          h1 {
+            animation: slideIn 1.5s ease-out;
+            animation-fill-mode: both;
+            animation-delay: 0.5s;  /* Slight delay for text entrance */
+          }
+
+          a {
+            animation: slideIn 1.5s ease-out;
+            animation-fill-mode: both;
+            animation-delay: 1s;  /* More delay for button entrance */
+            opacity: 1;
+            z-index: 20;
+          }
+
+          /* Add sparkles that fade in */
+          .sparkle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+          }
+
+          .entrance-sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            animation: entranceSparkle 2s ease-out;
+          }
+
+          @keyframes entranceSparkle {
+            0% {
+              transform: scale(0) rotate(0deg);
+              opacity: 0;
+            }
+            50% {
+              opacity: 1;
+            }
+            100% {
+              transform: scale(1.5) rotate(360deg);
+              opacity: 0;
+            }
+          }
+
+          /* Initial state for background image */
+          .object-cover {
+            opacity: 1 !important;
+            z-index: 1;
+            animation: imageFadeIn 2s ease-out forwards;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            max-height: 100%;
+            transform: scale(0.4);
+          }
+
+          @keyframes imageFadeIn {
+            from { 
+              opacity: 0;
+              transform: scale(1.1);
+            }
+            to { 
+              opacity: 1;
+              transform: scale(1);
+            }
+          }
+
+          /* Heart tunnel effect */
+          .heart-tunnel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            perspective: 1000px;
+            z-index: 100;
+            pointer-events: none;
+          }
+
+          .tunnel-heart {
+            position: absolute;
+            color: #ff8fa3;
+            text-shadow: 0 0 10px rgba(255, 143, 163, 0.8);
+            animation: tunnelEffect 2s forwards;
+            z-index: 101;
+          }
+
+          @keyframes tunnelEffect {
+            from {
+              transform: translateZ(-1000px) translateX(-50%) translateY(-50%);
+              opacity: 1;
+            }
+            to {
+              transform: translateZ(500px) translateX(-50%) translateY(-50%);
+              opacity: 0;
+            }
+          }
+
+          /* Enhanced entrance animations */
+          @keyframes fadeInText {
+            from { 
+              opacity: 0.5;
+              transform: translateY(20px);
+            }
+            to { 
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          /* Adjust animations to start from visible state */
+          @keyframes pageEnter {
+            from { 
+                opacity: 0.5;
+                transform: scale(1.1);
+            }
+            to { 
+                opacity: 1;
+                transform: scale(1);
+            }
+          }
+
+          /* Add floating rose petals */
+          .rose-petal {
+            position: fixed;
+            pointer-events: none;
+            animation: floatPetal 10s linear infinite;
+            z-index: 15;
+          }
+
+          @keyframes floatPetal {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+          }
+
+          /* Add glowing border around content */
+          .flex.flex-col {
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 
+                0 0 15px rgba(255, 143, 163, 0.3),
+                0 0 30px rgba(255, 143, 163, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+          }
+
+          /* Add floating hearts around text */
+          .floating-decor {
+            position: absolute;
+            font-size: 24px;
+            color: #ff8fa3;
+            text-shadow: 0 0 10px rgba(255, 143, 163, 0.8);
+            pointer-events: none;
+            animation: floatAround 6s ease-in-out infinite;
+          }
+
+          @keyframes floatAround {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(10px, -10px) rotate(5deg);
+            }
+            50% {
+                transform: translate(0, -15px) rotate(0deg);
+            }
+            75% {
+                transform: translate(-10px, -10px) rotate(-5deg);
+            }
+          }
+
+          /* Add romantic pulse to the button */
+          a {
+            transition: all 0.3s ease;
+            animation: buttonPulse 2s infinite;
+          }
+
+          @keyframes buttonPulse {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(255, 143, 163, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(255, 143, 163, 0.8);
+            }
+          }
+
+          a:hover {
+            transform: scale(1.05);
+            background: rgba(255, 143, 163, 0.3) !important;
+          }
+
+          @keyframes pulse {
+            0% {
+              box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+            }
+            70% {
+              box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+            }
+            100% {
+              box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+          }
+
+          .glow-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 10px 20px;
+            color: white;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+          }
+
+          .glow-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+          }
+
+          /* Add the font import at the top of your style section */
+          @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+    </style>
+
+    </head>
+
+  <body class="overflow-x-hidden bg-gray-900">
+    <div class="relative h-screen overflow-hidden">
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 flex items-center justify-center" style="align-items: flex-start; padding-bottom: 5rem;">
+          <img
+            class="absolute h-full w-full object-contain transition-opacity duration-1000 ease-in-out opacity-100"
+            src="../assets/bg1.gif"
+            alt="Background Image"
+            style="transform: scale(2); max-width: 100%; max-height: 100%;"
+          />
+        </div>
+      </div>
+
+      <div class="absolute inset-0 flex items-center justify-center z-10">
+        <div class="flex flex-col text-white text-center">
+          <h1 aria-label="Hi! I'm a developer" class="text-4xl font-bold mb-4 bg-gray-900 bg-opacity-70 p-3 rounded-xl">
+                &nbsp;<span class="typewriter nocaret"></span>
+          </h1>
+          <a
+            href="handshake.html"
+            class="glow-button"
+          >
+            Lets start a journey together
+          </a>
+          <!-- <h1 class="animated-text">Welcome<span class="scrolling-text changing-text"></span></h1> -->
+          <!-- Other content goes here -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Create heart tunnel effect if coming from previous page
+        if (sessionStorage.getItem('pageTransition') === 'true') {
+          const tunnel = document.createElement('div');
+          tunnel.className = 'heart-tunnel';
+          document.body.appendChild(tunnel);
+
+          // Create tunnel of hearts
+          for (let i = 0; i < 50; i++) {
+            setTimeout(() => {
+              const heart = document.createElement('div');
+              heart.className = 'tunnel-heart';
+              heart.innerHTML = '❤';
+              heart.style.left = '50%';
+              heart.style.top = '50%';
+              heart.style.fontSize = `${20 + i/2}px`;
+              tunnel.appendChild(heart);
+
+              // Remove hearts after animation
+              setTimeout(() => heart.remove(), 2000);
+            }, i * 40);
+          }
+
+          // Clear transition state
+          sessionStorage.removeItem('pageTransition');
+        }
+
+        // Add sparkle effect on page load
+        function createEntranceSparkles() {
+          const container = document.createElement('div');
+          container.className = 'sparkle-container';
+          document.body.appendChild(container);
+
+          for (let i = 0; i < 30; i++) {
+            setTimeout(() => {
+              const sparkle = document.createElement('div');
+              sparkle.className = 'entrance-sparkle';
+              sparkle.style.left = `${Math.random() * 100}vw`;
+              sparkle.style.top = `${Math.random() * 100}vh`;
+              sparkle.style.animationDelay = `${Math.random() * 1}s`;
+              container.appendChild(sparkle);
+              
+              // Remove sparkle after animation
+              setTimeout(() => sparkle.remove(), 2000);
+            }, i * 50);
+          }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+          // Create entrance sparkles
+          createEntranceSparkles();
+
+          // Existing background image rotation code
+          let backgroundImages = ["bg1.gif", "bg2.gif", "bg3.gif"];
+          let currentIndex = 0;
+          let backgroundElement = document.querySelector(".absolute > img");
+
+          function changeBackground() {
+            currentIndex = (currentIndex + 1) % backgroundImages.length;
+            let nextImage = backgroundImages[currentIndex];
+            backgroundElement.style.opacity = 0;
+            setTimeout(function () {
+              backgroundElement.src = `../assets/${nextImage}`;
+              backgroundElement.style.opacity = 1;
+            }, 1000);
+          }
+
+          setInterval(changeBackground, 5000);
+        });
+
+        function createRosePetals() {
+          const petals = ['🌸', '🌺', '💮', '🎀'];
+          setInterval(() => {
+            const petal = document.createElement('div');
+            petal.className = 'rose-petal';
+            petal.innerHTML = petals[Math.floor(Math.random() * petals.length)];
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.fontSize = (Math.random() * 10 + 15) + 'px';
+            petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            document.body.appendChild(petal);
+            
+            setTimeout(() => petal.remove(), 10000);
+          }, 300);
+        }
+
+        function createFloatingDecorations() {
+          const decorations = ['♥', '✨', '💕'];
+          const container = document.querySelector('.flex.flex-col');
+          
+          decorations.forEach((decor, index) => {
+            const elem = document.createElement('div');
+            elem.className = 'floating-decor';
+            elem.innerHTML = decor;
+            elem.style.left = (index * 50 - 50) + 'px';
+            elem.style.top = '-30px';
+            elem.style.animationDelay = (index * 0.5) + 's';
+            container.appendChild(elem);
+          });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+          // ... existing code ...
+          createRosePetals();
+          createFloatingDecorations();
+        });
+
+        function handlePageTransition() {
+            // Create heart tunnel transition
+            const tunnel = document.createElement('div');
+            tunnel.className = 'heart-tunnel';
+            document.body.appendChild(tunnel);
+
+            // Create heart shower effect
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'tunnel-heart';
+                    heart.innerHTML = '❤';
+                    heart.style.left = `${Math.random() * 100}vw`;
+                    heart.style.top = `${Math.random() * 100}vh`;
+                    heart.style.fontSize = `${20 + i/3}px`;
+                    tunnel.appendChild(heart);
+                }, i * 20);
+            }
+
+            // Fade out current page
+            document.body.style.animation = 'fadeOut 1.5s forwards';
+        }
+
+        document.querySelector('a').addEventListener('click', (e) => {
+            e.preventDefault();
+            handlePageTransition();
+            setTimeout(() => {
+                window.location.href = e.target.href;
+            }, 1500);
+        });
+    </script>
+  </body>
+</html>
