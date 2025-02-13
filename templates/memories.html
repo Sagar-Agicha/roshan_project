@@ -406,6 +406,19 @@
                 <div class="img-wrapper slower">
                         <img src="../assets/roshan10.jpg" alt="">
                 </div>
+
+                <div class="img-wrapper faster animate-down">
+                        <img src="../assets/roshan11.jpg" alt="">
+                </div>
+
+                <div class="img-wrapper faster1 animate-up">
+                        <img src="../assets/roshan12.jpg" alt="">
+                </div>
+
+                <div class="img-wrapper faster animate-down">
+                        <img src="../assets/roshan13.jpg" alt="">
+                </div>
+
             </div>
             <header></header>
         </div>
@@ -445,8 +458,8 @@
                         // Gradually increase volume
                         let volume = 0;
                         const fadeInterval = setInterval(() => {
-                            if (volume < 0.01) {
-                                volume += 0.02;
+                            if (volume < 0.10) {
+                                volume += 0.10;
                                 audio.volume = volume;
                             } else {
                                 clearInterval(fadeInterval);
